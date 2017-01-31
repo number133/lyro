@@ -57,6 +57,13 @@
 
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
+                    <strong>Text Romaji:</strong>
+                    {!! Form::textarea('text_rm', null, array('class' => 'form-control')) !!}
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
                     <strong>Text English:</strong>
                     {!! Form::textarea('text_en', null, array('class' => 'form-control')) !!}
                 </div>

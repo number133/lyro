@@ -45,3 +45,14 @@ Route::delete('/songs/destroy/{song}', [
     'as' => 'songs.destroy',
     'uses' => 'SongsController@destroy'
 ]);
+
+// lines
+Route::get('/lines/edit/{song}/{line}', [
+    'as' => 'lines.edit',
+    'uses' => 'LinesController@edit'
+]);
+
+Route::post('/lines/store', [
+    'as' => 'lines.store',
+    'uses' => 'LinesController@store'
+]);

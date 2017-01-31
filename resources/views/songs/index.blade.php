@@ -35,6 +35,7 @@
                                     <td>
                                         <a class="btn btn-primary" href="{{ route('songs.show',$song->id) }}">Show</a>
                                         <a class="btn btn-primary" href="{{ route('songs.edit',$song->id) }}">Edit</a>
+                                        <a class="btn btn-primary" href="{{ route('lines.edit', [$song->id, 1]) }}">Edit Lines</a>
                                         {!! Form::open(['method' => 'DELETE','route' => ['songs.destroy', $song->id],'style'=>'display:inline']) !!}
                                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                         {!! Form::close() !!}

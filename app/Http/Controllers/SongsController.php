@@ -29,6 +29,8 @@ class SongsController extends Controller
         $song_id = Song::create($request->all())->id;
         $text_jp = $request->text_jp;
         Line::saveTextLines($song_id, $text_jp, 'jp');
+        $text_rm = $request->text_rm;
+        Line::saveTextLines($song_id, $text_rm, 'rm');
         $text_en = $request->text_en;
         Line::saveTextLines($song_id, $text_en, 'en');
         return redirect()->route('songs.index')
