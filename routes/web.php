@@ -41,6 +41,11 @@ Route::get('/songs/edit/{song}', [
     'uses' => 'SongsController@edit'
 ]);
 
+Route::put('/songs/update/{song}', [
+    'as' => 'songs.update',
+    'uses' => 'SongsController@update'
+]);
+
 Route::delete('/songs/destroy/{song}', [
     'as' => 'songs.destroy',
     'uses' => 'SongsController@destroy'

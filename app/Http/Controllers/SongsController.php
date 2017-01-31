@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Song;
 use App\Line;
+use App\Term;
 use Illuminate\Http\Request;
 
 class SongsController extends Controller
@@ -45,8 +46,32 @@ class SongsController extends Controller
 
     public function destroy($song)
     {
+        Term::where('song_id', $song)->delete();
+        Line::where('song_id', $song)->delete();
         Song::find($song)->delete();
         return redirect()->route('songs.index')
             ->with('success','Song deleted successfully');
+    }
+
+    public function edit(Song $song)
+    {
+        return view('songs.edit', compact('song'));
+    }
+
+    public function update(Request $request, $song)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'artist' => 'required'
+        ]);
+
+        $song = Song::find($song);
+        $song->name = $request->name;
+        $song->artist = $request->artist;
+        $song->video_url = $request->video_url;
+        $song->save();
+
+        return redirect()->route('songs.index')
+            ->with('success','Song updated successfully');
     }
 }

@@ -15,6 +15,9 @@ class CreateTableLines extends Migration
     {
         Schema::create('lines', function (Blueprint $table) {
             $table->integer('song_id')->unsigned();
+            $table->foreign('song_id')
+                ->references('id')->on('songs')
+                ->onDelete('cascade');
             $table->integer('line_number')->unsigned();
             $table->string('text', 500);
             $table->string('lang', 10);

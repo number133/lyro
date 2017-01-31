@@ -17,10 +17,16 @@
                         </div>
                     @endif
                     <div class="panel-body">
+                        @if ($song->video_url)
+                            <iframe width="420" height="315"
+                                src="{{ $song->video_url }}">
+                            </iframe>
+                        @endif
+                        <br>
                         {{ $song->artist }} : {{ $song->name }}
                         <br>
                         @foreach ($song->lines as $line)
-                            {{ $line->line_number }}: {{ $line->text }} <br/>
+                            {{ $line->line_number }}: {{ $line->terms }} <br/>
                         @endforeach
                     </div>
                 </div>

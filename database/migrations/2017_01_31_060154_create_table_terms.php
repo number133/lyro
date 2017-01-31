@@ -15,6 +15,9 @@ class CreateTableTerms extends Migration
     {
         Schema::create('terms', function (Blueprint $table) {
             $table->integer('song_id')->unsigned();
+            $table->foreign('song_id')
+                ->references('id')->on('songs')
+                ->onDelete('cascade');
             $table->integer('line_number')->unsigned();
             $table->integer('term_number')->unsigned();
             $table->string('text', 100);
