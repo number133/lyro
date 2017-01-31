@@ -25,9 +25,45 @@
                         <br>
                         {{ $song->artist }} : {{ $song->name }}
                         <br>
-                        @foreach ($song->lines as $line)
-                            {{ $line->line_number }}: {{ $line->terms }} <br/>
-                        @endforeach
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- Nav tabs -->
+                                <div class="card">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="active"><a href="#jp" aria-controls="jp" role="tab" data-toggle="tab">Japanese</a></li>
+                                        <li role="presentation"><a href="#rm" aria-controls="rm" role="tab" data-toggle="tab">Romaji</a></li>
+                                        <li role="presentation"><a href="#en" aria-controls="en" role="tab" data-toggle="tab">English</a></li>
+                                    </ul>
+
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane active" id="jp">
+                                            @foreach ($song->lines as $line)
+                                                @if ( $line->lang == 'jp')
+                                                    {{ $line->line_number }}: {{ $line->terms }} <br/>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="rm">
+                                            @foreach ($song->lines as $line)
+                                                @if ( $line->lang == 'rm')
+                                                    {{ $line->line_number }}: {{ $line->terms }} <br/>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="en">
+                                            @foreach ($song->lines as $line)
+                                                @if ( $line->lang == 'en')
+                                                    {{ $line->line_number }}: {{ $line->terms }} <br/>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>

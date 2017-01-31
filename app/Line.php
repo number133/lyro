@@ -43,6 +43,7 @@ class Line extends Model
             Term::saveTextTerms($song_id, $i, $text_line, $lang);
             $i++;
         }
+        return $i - 1;
     }
 
     public function terms() {

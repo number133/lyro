@@ -18,6 +18,7 @@ class CreateTableSongs extends Migration
             $table->string('name', 100);
             $table->string('artist', 100);
             $table->string('video_url', 200)->nullable();
+            $table->integer('line_count')->unsigned()->default(0);
             $table->timestamps();
         });
     }

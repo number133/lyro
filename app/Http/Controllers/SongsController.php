@@ -27,13 +27,16 @@ class SongsController extends Controller
             'artist' => 'required'
         ]);
 
-        $song_id = Song::create($request->all())->id;
+        $song = Song::create($request->all());
         $text_jp = $request->text_jp;
-        Line::saveTextLines($song_id, $text_jp, 'jp');
+        $line_count = Line::saveTextLines($song->id, $text_jp, 'jp');
         $text_rm = $request->text_rm;
-        Line::saveTextLines($song_id, $text_rm, 'rm');
+        Line::saveTextLines($song->id, $text_rm, 'rm');
         $text_en = $request->text_en;
-        Line::saveTextLines($song_id, $text_en, 'en');
+        Line::saveTextLines($song->id, $text_en, 'en');
+
+        $song->line_count = $line_count;
+        $song->save();
         return redirect()->route('songs.index')
             ->with('success','Song created successfully');
     }

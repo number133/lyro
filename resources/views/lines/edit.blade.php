@@ -8,6 +8,12 @@
                     <h2>Edit song line</h2>
                 </div>
                 <div class="pull-right">
+                    @if ($line_number > 1)
+                    <a class="btn btn-primary" href="{{ route('lines.edit', [$song_id, $line_number - 1]) }}"> Prev line</a>
+                    @endif
+                    @if ($line_number < $line_count)
+                    <a class="btn btn-primary" href="{{ route('lines.edit', [$song_id, $line_number + 1]) }}"> Next line</a>
+                    @endif
                     <a class="btn btn-primary" href="{{ route('songs.index') }}"> Back</a>
                 </div>
             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Line;
 use App\Term;
+use App\Song;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -14,7 +15,8 @@ class LinesController extends Controller
     	$line_rm_text = $this->getLineComposed($song, $line, 'rm');
     	$song_id = $song;
     	$line_number = $line;
-    	return view('lines.edit', compact('song_id', 'line_number', 'line_jp_text', 'line_rm_text'));
+        $line_count = Song::find($song)->line_count;
+    	return view('lines.edit', compact('song_id', 'line_number', 'line_count', 'line_jp_text', 'line_rm_text'));
     }
 
     public function store(Request $request) {
